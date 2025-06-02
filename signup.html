@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Sports Management System</title>
+<style>
+body{
+text-align:center;
+background-image:url('sign.jpg');
+            background-size:100%;
+}
+h1{
+color:violet;
+}
+</style>
+    <!-- CSS styles remain unchanged -->
+    <style>
+        /* ... (keep the existing CSS) ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="signup-box">
+            <h1>Sign Up</h1>
+            <form id="signupForm" onsubmit="return validateForm()">
+                <input type="text" id="firstName" placeholder="First Name" required><br><br>
+                <input type="text" id="lastName" placeholder="Last Name" required><br><br>
+                <select id="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br><br>
+                <input type="date" id="dob" placeholder="Date of Birth" required><br><br>
+                <input type="tel" id="contactNumber" placeholder="Contact Number" required><br><br>
+                <input type="email" id="email" placeholder="Email Address" required><br><br>
+                <input type="password" id="password" placeholder="Password" required><br><br>
+   <input type="text" id="streetAddress" placeholder="Street Address" required><br><br>
+                <input type="text" id="city" placeholder="City" required><br><br>
+                <input type="text" id="state" placeholder="State/Province" required><br><br>
+                <input type="text" id="primarySport" placeholder="Primary Sport" required><br><br>
+                <input type="text" id="positionsPlayed" placeholder="Position(s) Played" required><br><br>
+                <select id="skillLevel" required>
+                    <option value="">Select Skill Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                    <option value="professional">Professional</option>
+                </select><br><br>
+                <input type="number" id="yearsExperience" placeholder="Years of Experience" required><br><br>
+               
+                <input type="tel" id="emergencyContactNumber" placeholder="Emergency Contact Number" required><br><br>
+                <label>
+                    <input type="checkbox" id="termsAgreement" required>
+                    I agree to the Terms and Conditions
+                </label><br><br>
+                <button type="submit" class="btn">Sign Up</button>
+            </form>
+           
+        </div>
+    </div>
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var contactNumber = document.getElementById("contactNumber").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var gender = document.getElementById("gender").value;
+            var skillLevel = document.getElementById("skillLevel").value;
+
+            if (!isalphabet(firstName) || !isalphabet(lastName)) {
+                alert("Please enter valid names (alphabets only)");
+                return false;
+            }
+
+            if (!isnumber(contactNumber)) {
+                alert("Please enter a valid contact number (10 digits)");
+                return false;
+            }
+
+            if (!checkemail(email)) {
+                alert("Please enter a valid email address");
+                return false;
+            }
+
+            if (!checkPassword(password)) {
+                alert("Password should be at least 6 characters long and contain only alphanumeric characters");
+                return false;
+            }
+
+
+            if (gender === "") {
+                alert("Please select a gender");
+                return false;
+            }
+
+            if (skillLevel === "") {
+                alert("Please select a skill level");
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+
+        function isalphabet(elem) {
+            var exp = /^[a-zA-Z\s]+$/;
+            return exp.test(elem);
+        }
+
+        function isnumber(elem) {
+            var exp = /^[0-9]+$/;
+            return exp.test(elem) && elem.length === 10;
+        }
+
+        function checkemail(elem) {
+            var exp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return exp.test(elem);
+        }
+
+        function checkPassword(elem) {
+            var exp = /^[a-zA-Z0-9]+$/;
+            return elem.length >= 6 && exp.test(elem);
+        }
+    </script>
+</body>
+</html>
